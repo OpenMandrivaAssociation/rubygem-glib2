@@ -1,11 +1,11 @@
 # Generated from pkg-config-1.1.4.gem by gem2rpm5 -*- rpm-spec -*-          
 %define	rbname	glib2
 
-Summary:	Ruby binding of GLib-2.x.
+Summary:	Ruby binding of GLib-2.x
 Name:		rubygem-%{rbname}
 
 Version:	1.1.5
-Release:	1
+Release:	2
 Group:		Development/Ruby
 License:	GPLv2+ or Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
