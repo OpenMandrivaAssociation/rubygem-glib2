@@ -5,7 +5,7 @@ Summary:	Ruby binding of GLib-2.x
 Name:		rubygem-%{rbname}
 
 Version:	1.1.5
-Release:	5
+Release:	6
 Group:		Development/Ruby
 License:	GPLv2+ or Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
