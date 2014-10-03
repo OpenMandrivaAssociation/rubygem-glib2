@@ -4,8 +4,8 @@
 Summary:	Ruby binding of GLib-2.x
 Name:		rubygem-%{rbname}
 
-Version:	1.1.5
-Release:	8
+Version:	2.2.0
+Release:	1
 Group:		Development/Ruby
 License:	GPLv2+ or Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
@@ -45,13 +45,14 @@ Development files for %{name}
 %gem_install
 
 %files
-%{ruby_gemdir}/gems/%{rbname}-%{version}/lib/*.rb
-%{ruby_gemdir}/gems/%{rbname}-%{version}/lib/%{rbname}/*.rb
-%{ruby_gemdir}/specifications/%{rbname}-%{version}.gemspec
+%{gem_dir}/gems/%{rbname}-%{version}/lib/*.rb
+%{gem_dir}/gems/%{rbname}-%{version}/lib/%{rbname}/*.rb
+%{gem_dir}/gems/%{rbname}-%{version}/lib/gnome2
+%{gem_dir}/specifications/%{rbname}-%{version}.gemspec
 %{ruby_sitearchdir}/glib2.so                                                                                                                                                                                 
 
 %files doc
-%doc %{ruby_gemdir}/doc/%{rbname}-%{version}
+%doc %{gem_dir}/doc/%{rbname}-%{version}
 
 %files  devel                                                                                                                                                                                                  
 %{ruby_sitearchdir}/*.h 
