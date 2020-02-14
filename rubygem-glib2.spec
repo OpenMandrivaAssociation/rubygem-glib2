@@ -15,7 +15,8 @@ BuildRequires:	rubygems-devel
 BuildRequires:	rubygem(pkg-config)
 BuildRequires:  ruby-devel
 BuildRequires:  pkgconfig(glib-2.0)
-Obsoletes:      ruby-glib2
+BuildRequires:  rubygem-native-package-installer
+Obsoletes:      ruby-glib2 = 3.0.7
 
 %description
 Ruby binding of GLib-2.x.
