@@ -2,3 +2,4 @@ removed_sources:
   glib2-2.2.4.gem: 2387c5a151a7bb324de604234960cf4a6e2aa232
 sources:
   glib2-3.0.7.gem: 053ac46316fd524fb8159d3be159d2e01aa275c8
+  glib2-3.4.1.gem: 48f8b780bb83b72762e9d762d916e3ccbb63c787
