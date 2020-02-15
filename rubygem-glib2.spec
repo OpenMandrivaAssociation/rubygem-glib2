@@ -72,7 +72,6 @@ cp -a .%{gem_extdir_mri}/{gem.build_complete,*.so,*.h} \
 %{gem_extdir_mri}/gem.build_complete
 %{gem_instdir}/Rakefile
 
-/usr/lib/debug/%{gem_instdir}/ext/%{gem_name}/glib2.so-3.4.1-2.x86_64.debug
 %{gem_instdir}/ext/%{gem_name}/.sitearchdir.time
 %{gem_instdir}/ext/%{gem_name}/Makefile
 %{gem_instdir}/ext/%{gem_name}/depend
