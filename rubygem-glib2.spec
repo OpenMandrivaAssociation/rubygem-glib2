@@ -38,50 +38,46 @@ Group:      Development/Ruby
 Development files for %{name}
 
 %prep
-%setup -q -c -T
-%gem_install -n %{SOURCE0}
+%setup -q -n %{gem_name}-%{version}
 
 %build
-
+gem build ../%{gem_name}-%{version}.gemspec
+%gem_install
 
 %install
 rm -rf %{buildroot}
 
-mkdir -p %{buildroot}%{gem_dir} %{buildroot}%{gem_archdir}
+mkdir -p %{buildroot}%{gem_dir} %{buildroot}%{gem_extdir_mri}
+
+/bin/rm -r .%{gem_instdir}/ext/
 
 cp -a .%{gem_dir}/* \
     %{buildroot}/%{gem_dir}/
 
-cp -a .%{gem_archdir}/* \
-    %{buildroot}/%{gem_archdir}/
-
-/bin/rm -r %{buildroot}/%{gem_dir}/gems/%{gem_name}-%{version}/ext/
+cp -a .%{gem_extdir_mri}/{gem.build_complete,*.so,*.h} \
+    %{buildroot}/%{gem_extdir_mri}/
 
 
 %files
-%{gem_dir}/gems/%{gem_name}-%{version}/lib/*.rb
-%{gem_dir}/gems/%{gem_name}-%{version}/lib/%{gem_name}/*.rb
-%{gem_dir}/gems/%{gem_name}-%{version}/lib/gnome2
-%{gem_dir}/gems/%{gem_name}-%{version}/*.rb
-%{gem_dir}/gems/%{gem_name}-%{version}/*gemspec
-%{gem_dir}/gems/%{gem_name}-%{version}/sample/*.rb
-%{gem_dir}/specifications/%{gem_name}-%{version}*.gemspec
-%{gem_dir}/gems/%{gem_name}-%{version}/test/*.rb
-%{gem_dir}/cache/*.gem
-
-%{gem_extdir_mri}/%{gem_name}.so                                                                                                                                                                                 
-
-%exclude %{gem_extdir_mri}/gem_make.out
-%exclude %{gem_extdir_mri}/mkmf.log
-%exclude %{gem_extdir_mri}/gem.build_complete
-%exclude %{gem_dir}/gems/%{gem_name}-%{version}/Rakefile
+%{gem_instdir}/lib/*.rb
+%{gem_instdir}/lib/%{gem_name}/*.rb
+%{gem_instdir}/lib/gnome2
+%{gem_instdir}/*.rb
+%{gem_instdir}/sample/*.rb
+%{gem_spec}
+%{gem_instdir}/glib2.gemspec
+%{gem_instdir}/test/*.rb
+%{gem_cache}
+%{gem_extdir_mri}/%{gem_name}.so 
+%{gem_extdir_mri}/gem.build_complete
+%{gem_instdir}/Rakefile
 
 %files doc
-%doc %{gem_dir}/doc/%{gem_name}-%{version}/rdoc/*
-%doc %{gem_dir}/doc/%{gem_name}-%{version}/ri/*
-%doc %{gem_dir}/gems/%{gem_name}-%{version}/[A-Z]*
+%doc %{gem_docdir}/rdoc/*
+%doc %{gem_docdir}/ri/*
+%doc %{gem_instdir}/[A-Z]*
 
-%files  devel                                                                                                                                                                                                  
+%files  devel
 %{gem_extdir_mri}/*.h
 
 
