@@ -30,7 +30,7 @@ BuildArch:	noarch
 %description	doc
 Documents, RDoc & RI documentation for %{name}.
 
-%package    devel                                                                                                                                                                                              
+%package    devel
 Summary:    Development files for %{name}
 Group:      Development/Ruby
 
@@ -49,7 +49,7 @@ rm -rf %{buildroot}
 
 mkdir -p %{buildroot}%{gem_dir} %{buildroot}%{gem_extdir_mri}
 
-/bin/rm -r .%{gem_instdir}/ext/
+#/bin/rm -r .%{gem_instdir}/ext/
 
 cp -a .%{gem_dir}/* \
     %{buildroot}/%{gem_dir}/
@@ -72,6 +72,16 @@ cp -a .%{gem_extdir_mri}/{gem.build_complete,*.so,*.h} \
 %{gem_extdir_mri}/gem.build_complete
 %{gem_instdir}/Rakefile
 
+/usr/lib/debug/%{gem_instdir}/ext/%{gem_name}/glib2.so-3.4.1-2.x86_64.debug
+%{gem_instdir}/ext/%{gem_name}/.sitearchdir.time
+%{gem_instdir}/ext/%{gem_name}/Makefile
+%{gem_instdir}/ext/%{gem_name}/depend
+%{gem_instdir}/ext/%{gem_name}/extconf.rb
+%{gem_instdir}/ext/%{gem_name}/glib2.def
+%{gem_instdir}/ext/%{gem_name}/glib2.so
+
+%exclude %{gem_instdir}/ext/%{gem_name}/*.o
+
 %files doc
 %doc %{gem_docdir}/rdoc/*
 %doc %{gem_docdir}/ri/*
@@ -79,6 +89,7 @@ cp -a .%{gem_extdir_mri}/{gem.build_complete,*.so,*.h} \
 
 %files  devel
 %{gem_extdir_mri}/*.h
-
-
+%{gem_instdir}/ext/%{gem_name}/*.c
+%{gem_instdir}/ext/%{gem_name}/*.h
+%{gem_instdir}/ext/%{gem_name}/ruby-glib2.pc
 
