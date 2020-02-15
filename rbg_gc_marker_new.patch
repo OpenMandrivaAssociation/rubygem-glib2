@@ -1,0 +1,12 @@
+diff -up glib2-3.4.1/ext/glib2/rbgprivate.h.omv~ glib2-3.4.1/ext/glib2/rbgprivate.h
+--- glib2-3.4.1/ext/glib2/rbgprivate.h.omv~	2020-02-15 21:08:04.421134479 +0100
++++ glib2-3.4.1/ext/glib2/rbgprivate.h	2020-02-15 21:08:10.757134758 +0100
+@@ -122,7 +122,7 @@ G_GNUC_INTERNAL void rg_enum_add_constan
+ G_GNUC_INTERNAL void rg_flags_add_constants(VALUE mod, GType flags_type, const gchar *strip_prefix);
+ G_GNUC_INTERNAL char *rg_obj_constant_lookup(const char *name);
+ 
+-G_GNUC_INTERNAL VALUE rbg_gc_marker_new(void);
++VALUE rbg_gc_marker_new(void);
+ G_GNUC_INTERNAL void rbg_gc_marker_guard(VALUE rb_gc_marker,
+                                          VALUE rb_object);
+ G_GNUC_INTERNAL void rbg_gc_marker_unguard(VALUE rb_gc_marker,

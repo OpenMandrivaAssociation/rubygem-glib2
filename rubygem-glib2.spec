@@ -10,6 +10,7 @@ Group:		Development/Ruby
 License:	GPLv2+ or Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
 Source0:	http://rubygems.org/gems/%{gem_name}-%{version}.gem
+Patch0:		rbg_gc_marker_new.patch
 BuildRequires:	rubygems
 BuildRequires:	rubygems-devel 
 BuildRequires:	rubygem(pkg-config)
@@ -38,7 +39,7 @@ Group:      Development/Ruby
 Development files for %{name}
 
 %prep
-%setup -q -n %{gem_name}-%{version}
+%autosetup -p1 -n %{gem_name}-%{version}
 
 %build
 gem build ../%{gem_name}-%{version}.gemspec
