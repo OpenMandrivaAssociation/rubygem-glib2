@@ -1,19 +1,16 @@
-
-%define	gem_name	glib2
+%define rb_ver 2.7.0
 
 Summary:	Ruby binding of GLib-2.x
-Name:		rubygem-%{gem_name}
+Name:		rubygem-glib2
 
-Version:	3.4.1
-Release:	3
+Version:	3.4.9
+Release:	1
 Group:		Development/Ruby
 License:	GPLv2+ or Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
-Source0:	http://rubygems.org/gems/%{gem_name}-%{version}.gem
+Source0:	http://rubygems.org/gems/glib2-%{version}.gem
 Patch0:		rbg_gc_marker_new.patch
-BuildRequires:	rubygems
-BuildRequires:	rubygems-devel 
-BuildRequires:	rubygem(pkg-config)
+BuildRequires:	rubygem-pkg-config
 BuildRequires:  ruby-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  rubygem-native-package-installer
@@ -22,14 +19,6 @@ Obsoletes:      ruby-glib2 = 3.0.7
 %description
 Ruby binding of GLib-2.x.
 
-%package	doc
-Summary:	Documentation for %{name}
-Group:		Development/Ruby
-Requires:	%{name} = %{EVRD}
-BuildArch:	noarch
-
-%description	doc
-Documents, RDoc & RI documentation for %{name}.
 
 %package    devel
 Summary:    Development files for %{name}
@@ -42,54 +31,19 @@ Development files for %{name}
 %autosetup -p1 -n %{gem_name}-%{version}
 
 %build
-gem build ../%{gem_name}-%{version}.gemspec
-%gem_install
+%gem_build 
 
 %install
-rm -rf %{buildroot}
-
-mkdir -p %{buildroot}%{gem_dir} %{buildroot}%{gem_extdir_mri}
-
-#/bin/rm -r .%{gem_instdir}/ext/
-
-cp -a .%{gem_dir}/* \
-    %{buildroot}/%{gem_dir}/
-
-cp -a .%{gem_extdir_mri}/{gem.build_complete,*.so,*.h} \
-    %{buildroot}/%{gem_extdir_mri}/
-
+%gem_install
 
 %files
-%{gem_instdir}/lib/*.rb
-%{gem_instdir}/lib/%{gem_name}/*.rb
-%{gem_instdir}/lib/gnome2
-%{gem_instdir}/*.rb
-%{gem_instdir}/sample/*.rb
-%{gem_spec}
-%{gem_instdir}/glib2.gemspec
-%{gem_instdir}/test/*.rb
-%{gem_cache}
-%{gem_extdir_mri}/%{gem_name}.so 
-%{gem_extdir_mri}/gem.build_complete
-%{gem_instdir}/Rakefile
-
-%{gem_instdir}/ext/%{gem_name}/.sitearchdir.time
-%{gem_instdir}/ext/%{gem_name}/Makefile
-%{gem_instdir}/ext/%{gem_name}/depend
-%{gem_instdir}/ext/%{gem_name}/extconf.rb
-%{gem_instdir}/ext/%{gem_name}/glib2.def
-%{gem_instdir}/ext/%{gem_name}/glib2.so
-
 %exclude %{gem_instdir}/ext/%{gem_name}/*.o
-
-%files doc
-%doc %{gem_docdir}/rdoc/*
-%doc %{gem_docdir}/ri/*
-%doc %{gem_instdir}/[A-Z]*
+%exclude %{gem_instdir}/ext/%{gem_name}/*.c
+%exclude %{gem_instdir}/ext/%{gem_name}/*.h
+%exclude %{gem_instdir}/extensions/x86_64-linux/%{rb_ver}/%{gem_name}-%{version}/*.h
+%exclude %{gem_instdir}/ext/%{gem_name}/ruby-glib2.pc
+%{gem_files}
 
 %files  devel
-%{gem_extdir_mri}/*.h
-%{gem_instdir}/ext/%{gem_name}/*.c
 %{gem_instdir}/ext/%{gem_name}/*.h
 %{gem_instdir}/ext/%{gem_name}/ruby-glib2.pc
-
