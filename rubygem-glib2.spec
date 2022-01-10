@@ -36,6 +36,9 @@ Development files for %{name}
 %install
 /bin/rm  %{_builddir}/%{gem_name}-%{version}/DESTDIR/%{gem_dir}/gems/%{gem_name}-%{version}/ext/glib2/.sitearchdir.time
 /bin/rm  %{_builddir}/%{gem_name}-%{version}/DESTDIR/%{gem_dir}/extensions/x86_64-linux/2.7.0/%{gem_name}-%{version}/mkmf.log
+#Remove duplicate so libraries
+/bin/rm  %{_builddir}/%{gem_name}-%{version}/DESTDIR/%{gem_libdir}/%{gem_name}.so
+/bin/rm  %{_builddir}/%{gem_name}-%{version}/DESTDIR/%{gem_instdir}/ext/%{gem_name}/%{gem_name}.so
 %gem_install
 
 %files  devel
