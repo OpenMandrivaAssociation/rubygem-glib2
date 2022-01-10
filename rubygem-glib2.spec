@@ -52,6 +52,7 @@ Development files for %{name}
 %exclude %{gem_instdir}/ext/%{gem_name}/*.c
 %exclude %{gem_instdir}/ext/%{gem_name}/*.h
 %exclude %{gem_libdir}/*.h
+%exclude %{gem_dir}/extensions/x86_64-linux/2.7.0/%{gem_name}-%{version}/*.h
 %exclude %{gem_instdir}/ext/%{gem_name}/ruby-glib2.pc
 %exclude %{gem_libdir}/gnome2/
 %exclude %{gem_libdir}/glib2.so
