@@ -34,16 +34,31 @@ Development files for %{name}
 %gem_build 
 
 %install
+/bin/rm  %{_builddir}/%{gem_name}-%{version}/DESTDIR/%{gem_dir}/gems/%{gem_name}-%{version}/ext/glib2/.sitearchdir.time
+/bin/rm  %{_builddir}/%{gem_name}-%{version}/DESTDIR/%{gem_dir}/extensions/x86_64-linux/2.7.0/%{gem_name}-%{version}/mkmf.log
 %gem_install
+
+%files  devel
+%{gem_instdir}/ext/%{gem_name}/ruby-glib2.pc
+%{gem_libdir}/gnome2/rake/*
+%{gem_instdir}/test/*
+%{gem_libdir}/gnome2-raketask.rb
+%{gem_libdir}/mkmf-gnome.rb
+%{gem_dir}/extensions/x86_64-linux/2.7.0/%{gem_name}-%{version}/*.h
+%{gem_libdir}/mkmf-*
 
 %files
 %exclude %{gem_instdir}/ext/%{gem_name}/*.o
 %exclude %{gem_instdir}/ext/%{gem_name}/*.c
 %exclude %{gem_instdir}/ext/%{gem_name}/*.h
-%exclude %{gem_instdir}/extensions/x86_64-linux/%{rb_ver}/%{gem_name}-%{version}/*.h
+%exclude %{gem_libdir}/*.h
 %exclude %{gem_instdir}/ext/%{gem_name}/ruby-glib2.pc
+%exclude %{gem_libdir}/gnome2/
+%exclude %{gem_libdir}/glib2.so
+%exclude %{gem_libdir}/gnome2-raketask.rb
+%exclude %{gem_dir}/gems/%{gem_name}-%{version}/ext/glib2/*
+%exclude %{gem_dir}/gems/%{gem_name}-%{version}/ext/glib
+%exclude %{gem_dir}/gems/%{gem_name}-%{version}/ext
+%exclude %{gem_libdir}/mkmf-gnome*.rb
 %{gem_files}
 
-%files  devel
-%{gem_instdir}/ext/%{gem_name}/*.h
-%{gem_instdir}/ext/%{gem_name}/ruby-glib2.pc
