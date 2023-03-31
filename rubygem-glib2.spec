@@ -4,7 +4,7 @@ Summary:	Ruby binding of GLib-2.x
 Name:		rubygem-glib2
 
 Version:	3.4.9
-Release:	1
+Release:	2
 Group:		Development/Ruby
 License:	GPLv2+ or Ruby
 URL:		http://ruby-gnome2.sourceforge.jp/
