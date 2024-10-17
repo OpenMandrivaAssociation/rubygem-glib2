@@ -7,7 +7,7 @@ Version:	3.4.9
 Release:	2
 Group:		Development/Ruby
 License:	GPLv2+ or Ruby
-URL:		http://ruby-gnome2.sourceforge.jp/
+URL:		https://ruby-gnome2.sourceforge.jp/
 Source0:	http://rubygems.org/gems/glib2-%{version}.gem
 Patch0:		rbg_gc_marker_new.patch
 BuildRequires:	rubygem-pkg-config
